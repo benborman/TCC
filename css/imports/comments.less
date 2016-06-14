@@ -1,0 +1,185 @@
+/* Comments */
+#comments {
+	position:relative;
+	h3 {
+		font-size: 1.618em;
+		padding: 0 0 1.2em;
+		border-bottom:1px dotted darken(@border_main, 3%); 
+	}
+	.commentlist { margin: 0 0 3.631em; }
+	.comment { 
+		width:100%; 
+		list-style: none;
+		.borderbox;
+		&.bypostauthor { 
+			background: #fef7d2; 
+		}
+		.comment-container { 
+			position: relative; 
+			padding: 2.618em 0;
+			border-bottom:1px dotted darken(@border_main, 3%); 
+		}
+		&.depth-2 {
+			.comment-container {
+				padding-left: 6em;
+			}
+		}
+		&.depth-3 {
+			.comment-container {
+				padding-left: 12em;
+			}
+		}
+		&.depth-4 {
+			.comment-container {
+				padding-left: 18em;
+			}
+		}
+		&.depth-5 {
+			.comment-container {
+				padding-left: 24em;
+			}
+		}						
+		.comment-head {
+			margin:0 0 1em 0;
+			.name { 
+				margin:0; 
+				font-weight: bold;
+				display: block;
+				font-size: 1.2em;
+				line-height: 1;
+				a {
+					color: darken(@color_body, 5%);
+				}
+			}
+			.date {
+				a {
+					color: @color_body;
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+			.edit, .date, .reply { font-size: .9em; }
+		}
+		.avatar {
+			float: left;
+			margin:0 2.244em 2.244em 0;
+			img { 
+				margin:0; 
+				vertical-align: middle; 
+			}
+		}
+		.comment-entry {
+			p {
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+		#respond {
+			margin-top: 1em;
+			#reply-title {
+				clear: both;
+				font-size: 1.387em;
+				margin-top: .857em;
+				padding: 0;
+				small {
+					font-size: .618em;
+				}
+			}
+			form {
+				margin: 0;
+				.form-submit {
+					margin: 0;
+				}
+			}
+		}
+	}
+	
+	ul.children {
+		margin: 0;
+		padding: 0;
+		li {
+			&:last-child {
+			}
+		}
+		.cancel-comment-reply {  }
+	}
+	.navigation {
+		a { 
+			display: block; 
+			text-decoration: none; 
+		}
+	}
+	.pingbacks {
+		li.pingback {
+			margin: 0 0 1.618em;
+			.reply { 
+				display: none;
+			}
+		}
+	}
+	.nocomments { 
+		font-weight: bold;
+		border: 1px solid @border_main;
+		margin: 0 0 2.618em;
+		padding: 1em 1.387em;
+		.border_radius(.53em);
+	}
+}
+
+/* Comments Form */
+#respond  { 
+	label { 
+		color: lighten(@color_body, 10%); 
+	}
+	#reply-title {
+		font-size: 1.618em;
+		margin: 0 0 1em;
+		small { 
+			display: block; 
+			margin:0 0 1.618em;
+			font-size: .53em;
+			font-weight: normal;
+			font-family: @sans;
+		}
+	}
+	#commentform  {	
+		.comment-form-author, .comment-form-email, .comment-form-url {
+			width:31.85%;
+			float: left;
+			margin-right:2.2%;
+		}
+		.comment-form-url {
+			margin-right:0;
+		}
+		.comment-form-comment {
+			label { display: none; }
+		}
+		label { 
+			display:block; 
+		}
+		input.txt, textarea { 
+			width:100%;			
+		}
+		textarea {
+			padding: .857em .65em;
+		}
+	}
+}
+
+/* Pingbacks / Trackbacks */
+.pinglist {
+	li {
+		margin: 0 0 0 1.618em;
+		list-style-type: decimal;
+		.author { 
+			font-weight: bold;
+		}
+		.date { }
+		.pingcontent { 
+			display: block; 
+			margin:0 0 1.618em; 
+		}
+	}
+}

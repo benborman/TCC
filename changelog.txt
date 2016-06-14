@@ -1,0 +1,43 @@
+*** Memorable Changelog ***
+
+2013.09.10 - version 1.0.4
+ * css/woocommerce.css - Fixed menu hovering on top of lightbox.
+ * style.css - Fixed Button Color and Button Text option.
+ * includes/theme-actions.php - Fixed Button Color and Button Text option.
+ * css/layout.css - Fixed issue that prevented phone number from displaying on iPad devices. 
+ * includes/widgets/widget-woo-team.php - Fixed author post count bug.
+ * style.css - Fixed rounded testimonial images in Safari.
+ * includes/theme-actions.php - Prevent Lightbox from being loaded twice when WooCommerce is enabled.
+
+2013.07.29 - version 1.0.3
+ * includes/js/general.js - Fixed android double tap to go.
+ * includes/js/enable-lightbox.js - enables lightbox for galleries in posts/pages.
+ * includes/theme-actions.php - Fixed Site Title link color being overridden && added missing closing brace in line #187.
+ * content.php - Adjust size of images for Testimonials and Features.
+ * css/woocommerce.css - Fixed WooCommerce reviews layout in lightbox mode & misaligned username and password fields & adds "Remove" button to Cart page on small screens & add to cart issue when tabs are disabled.
+ * includes/theme-woocommerce.php - Make WooCommerce style disabling 2.1 compatible.
+ * includes/theme-js.php - Removed fitvids.min.js.
+ * includes/js/fitvids.min.js - Removed fitvids.min.js.
+ * css/layout.css - Fixed slides layout.
+
+2013.07.24 - version 1.0.2
+ * includes/blog-posts.php - Fixed pagination bug.
+ * style.css - Fixed video in slides on small screens.
+ * css/layout.css - Fixed video in slides on small screens.
+
+2013.07.16 - version 1.0.1
+ * styles/*.css - Changed telephone icon to use FontAwesome & fixed static page margin issue
+ * css/layout.css - Changed telephone icon to use FontAwesome .
+ * includes/theme-actions.php - Changed telephone icon to use FontAwesome.
+ * images/ico-phone.png - *DELETED* Changed telephone icon to use FontAwesome.
+ * includes/blog-posts.php - Improved WooComponent styling.
+ * includes/featured-products.php - Improved WooComponent styling.
+ * includes/homepage-columns.php - Improved WooComponent styling.
+ * includes/specific-page-content.php - Improved WooComponent styling.
+ * index.php - Improved WooComponent styling.
+ * style.css - Improved WooComponent styling & fixed static page margin issue.
+ * includes/sidebar-init.php - Add .col-full to all homepage widgets so they align properly.
+ * includes/theme-options.php - Added fix to category selector.
+	
+2013.07.09 - version 1.0.0
+ * First release!

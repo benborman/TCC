@@ -1,0 +1,779 @@
+/*
+The styles in this stylesheet only apply to resolutions 768px and up
+
+CALCULATING DIMENSIONS:
+----------------------
+The layout is fluid. The sote wrapper (.col-full) has a fixed pixel max-width.
+All subsequent dimensions are calculated based on that fixed pixel width, using the formula: target / context = result
+Credit - http://www.alistapart.com/articles/fluidgrids/
+
+-----
+INDEX
+-----
+
+1. Global dropdown styles
+2. Top Navigation
+3. Main navigation dropdown menus
+ -3.1 General dropdown menus
+4. Containers & Columns
+5. Footer widgets
+6. IE Fixes
+
+/*----------------------*/
+
+@import "mixins";
+
+/*----------------------*/
+
+@media only screen and (min-width: 768px) {
+
+	#inner-wrapper {
+		left:0 !important; // Reset the mobile nav effects
+	}
+
+	/* 1. GLOBAL DROPDOWN STYLES (these are purely for the dropdown layout and you should only edit the width of the dropdowns) */
+	ul.nav {
+	    position: relative;
+	    margin-bottom:0;
+	    li {
+	    	position: relative;
+	    	float: left;
+	    	zoom:1;
+	    	list-style: none;
+	    	a {
+	    		display: block;
+	    		padding:.53em 1em;
+	    	}
+	    	&.parent { // Styles applied to all parent list items
+	    	}
+	    }
+	    /* LEVEL 2 */
+	    ul {
+	    	width:13em;
+	    	visibility: hidden;
+	    	position: absolute;
+	    	top:100%;
+	    	left: 0;
+	    	z-index: 9999;
+	    	margin:0;
+	    	li {
+	    		float: none;
+	    		a {
+	    			width: 100%;
+	    			display: inline-block;
+	    			.borderbox();
+	    		}
+	    		&.parent { // Styles applied to parent items in level 2
+	    		}
+	    	}
+	    }
+	    /* LEVEL 3 */
+	    ul ul {
+	    	left:100%;
+	    	top:0;
+	    	li {
+	    		&.parent { // Styles applied to parent items in level 3
+	    		}
+	    	}
+	    }
+	    li:hover > ul {
+	    	visibility: visible;
+	    }
+	}
+
+	/* 2. TOP NAVIGATION (Add top navigation presentational styles here) */
+	#top {
+	    background: #131313;
+	    margin: 0 -1.618em;
+	    padding:0 1.618em;
+	    display: block;
+	    #top-nav, .top-navigation {
+	    	display: block;
+	    	h3 {
+	    		display: none;
+	    	}
+	    }
+	    ul.nav {
+	    	font-size: 1em; // this adjusts the scale of the entire navigation and everything just works like magic
+	    	li {
+	    		a {
+	    			color: #ddd;
+	    		}
+	    	}
+	    	> li { // The following styles are applied ONLY to the top level list items
+	    		> a {
+	    			padding: 0;
+	    			margin: .857em 1.2em;
+	    			position: relative;
+	    			border-bottom: 2px solid transparent;
+	    			&:after {
+	    				content: '';
+	    				width: 1px;
+	    				height: 11px;
+	    				background: #4E4E4E;
+	    				position: absolute;
+	    				top: 6px;
+	    				right: -1.2em;
+	    			}	    						
+	    			&:hover {
+	    				text-decoration: none;
+	    				border-color: rgba(255,255,255,.3);
+	    			}
+	    		}
+				&:last-child {
+					> a {
+						&:after {
+							display:none;
+						}
+					}
+				}	    		
+	    		&:hover {
+	    		}
+	    		&.current-menu-item, &.current_page_item {
+	    			background: none;
+	    			a {
+	    				background: none;
+	    				border-color: #ccc;
+	    			}
+	    		}
+	    	}
+	    	/* LEVEL 2 */
+	    	ul {
+	    		background: #131313;
+	    		background: rgba(0,0,0,.55);
+	    		li {
+	    			a {
+	    				font-size: .857em;
+	    				&:hover {
+	       					background: #222;
+	    				}
+	    			}
+	    		}
+	    	}
+	    	/* LEVEL 3 */
+	    	ul ul {
+	    	}
+	    	li:hover > ul {
+	    	}
+	    }
+	}
+
+	/* 3. MAIN NAVIGATION DROPDOWN MENUS (Add main navigation presentational styles here) */
+
+	/**
+	 * Resets
+	 * As the mobile nav features extensive styling, much of it needs to be reset for desktop orientation
+	 */
+	.show-nav {
+		#inner-wrapper {
+			.border_radius(0);
+		}
+		#navigation {
+			.top-navigation {
+				display: none; // Just in case someone resizes to mobile, opens the nav and then resizes to desktop
+			}
+		}
+	}
+
+	/**
+	 * The main navigation styling
+	 */
+	#navigation  {
+		position: relative;
+		left:auto;
+		width:100%;
+		padding-top:0;
+		background: none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		.menus { // The menu container
+			border-top: 2px solid #fff;
+			border-color: rgba(255,255,255,.3);
+			.clearfix;
+			h3 {
+				display: none;
+			}
+		}
+	    ul.nav {
+	    	position: relative;
+	    	top: -2px;
+	    	> li { // The following styles are applied ONLY to the top level list items
+	    		> a {
+	    			font-size: 1.2em;
+	    			font-weight: bold;
+	    			border: 2px solid transparent;
+					border-width: 2px 0 0;
+	    			&:hover {
+	    			}
+	    		}
+	    		&:hover {
+	    			> a {
+	    				border-color: #fff;
+	    			}
+	    		}
+	    		&.current-menu-item, &.current_page_item {
+	    			background: none;
+	    			a {
+	    				border-color: #fff;
+	    				color: @color_body;
+	    			}
+	    		}
+	    	}
+	    	li {  // Overwrite mobile styles
+				a {
+					padding: 2.244em 1.2em 2em 1.2em;
+					text-shadow: none;
+	    			color: #fff;
+				}
+				&.current-menu-item, &.current_page_item {
+					> a {
+						color: @color_links;
+						background: none;
+						-webkit-box-shadow:none;
+						box-shadow:none;
+						text-shadow:none;
+						border: 2px solid transparent;
+						border-width: 2px 0 0;
+						&:after {
+							display: none;
+						}
+					}
+				}
+				ul {
+					a, ul li a {
+						font-weight: normal;
+						padding:.53em 1em;
+					}
+				}
+				&.parent {
+					> a {
+						padding-right: 2.618em;
+			    		&:after {
+			    			.iconafter;
+			    			content: "\f078";
+			    			position: absolute;
+			    			right: 1em;
+			    			top: 2.92em;
+			    			font-size: .95em;
+			    		}
+					}
+				}
+			}
+	    	/* LEVEL 2 */
+	    	ul {
+	    		background: #fff;
+	    		top: 93%;
+	    		border: 1px solid #DEDEDE;
+	    		left: auto;
+	    		right: auto;
+	    		li {
+	    			a {	
+	    				padding: .618em 1em;
+	    				color: #474747;
+	    				border-width: 1px 1px 1px 1px;
+	    				border-color: #EBEBEB #DEDEDE #EBEBEB #DEDEDE;
+	    				&:hover {
+	    					background: #F6F6F6;
+	    				}
+	    			}
+	    			&:last-child {
+	    				a {
+	    					border-bottom: 1px solid #DEDEDE;
+	    				}
+	    			}
+	    			&.parent {
+	    				> a {
+	    					position: relative;
+	    					&:after {
+	    						position: absolute;
+	    						top: 1.35em;
+	    						right: 1em;
+	    						content: "\f054";
+	    						font-family: 'FontAwesome';
+	    						font-size: .857em;
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    	ul {
+	    		&:before {
+	    			content: '';
+	    			width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 10px 10px 10px;
+					border-color: transparent transparent #fff transparent;
+					position: absolute;
+					left: 43%;
+					z-index: 10000;
+					top: -9px;
+	    		}
+	    	}
+	    	/* LEVEL 3 */
+	    	ul ul {
+	    		margin-left: 18px !important;
+	    		top:0;
+	    		left:90%; // reapply left 100% as we're offsetting the first child by 1px
+	    		&:before {
+	    			content: none;
+	    		}
+	    	}
+	    	li:hover > ul {
+	    	}
+	    }
+	    .widget_product_search {
+			margin-bottom:1.618em;
+			border:0;
+			#searchform {
+				border:1px solid @border_main;
+				padding:0;
+				background:none;
+				#s {
+					padding:.857em 2.618em .857em .857em;
+					.border_radius(0);
+					background: none;
+					border:0;
+					-webkit-box-shadow:none;
+					box-shadow:none;
+				}
+				#searchsubmit {
+					display: inline-block;
+				}
+			}
+		}
+	    ul.cart {
+	    }
+	    .nav-close, .nav-home {
+			display: none;
+		}
+		#header-contact {
+			float: right;
+			ul.nav {
+				li {
+		    		&:before {
+		    			.iconbefore;
+		    			content: "\f095";
+		    			color: @color_links;
+		    			font-weight: bold;
+		    			font-size: 1.2em;
+		    			position: relative;
+		    			top: 2px;
+		    			margin-right: .327em;
+		    		}					
+					padding: 2.244em 1.2em 2em 2.244em;
+					text-shadow: none;
+	    			color: #fff;
+	    			font-size: 1.2em;
+					border: 2px solid transparent;
+					border-width: 2px 0 0;
+					position: relative;
+					a { display: none; }
+					span { display: inline-block; }
+				}
+			}
+		}
+	}
+	// Hide the nav toggle link in desktop orientation
+	.nav-toggle { display: none; }
+
+	// Reset the 3d transforms
+	.csstransforms3d.csstransitions {
+		#navigation, .show-nav #navigation, .show-nav #inner-wrapper {
+			left: 0;
+		    -webkit-transform: translate3d(0%, 0, 0);
+		    -moz-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		    -o-transform: translate3d(0%, 0, 0);
+		    transform: translate3d(0%, 0, 0);
+		}
+	}
+
+	#footer-nav {
+		margin: 0 0 .382em;
+		li {
+			list-style-type: disc;
+			margin: 0 1em;
+			&:first-child {
+				list-style: none;
+				padding-left: 0;
+				margin-left: 0;
+			}
+		}
+	}
+
+	/* 4. CONTAINERS & COLUMNS */
+	#header {
+		padding: 5.874em 0 0;
+	    hgroup {
+	        float: left;
+	        h1, h2, h3 {
+	            float:none;
+	        }
+	    }
+	    .site-title, .site-description {
+	    	text-align: left;
+	    }
+	    ul.rss {
+	        margin-right:0;
+	        padding-right:0;
+	        li {
+	            border-right:0;
+	        }
+	    }
+	    ul.rss, ul.cart {
+	        li {
+	        }
+	    }
+	}
+	#main.fullwidth, .layout-full #main, .col-full {
+	    max-width: 1140px;
+	    margin:0 auto;
+	    width:100%;
+	}
+	#main {
+	    width: 74%; // golden ratio
+	}
+	#sidebar {
+	    margin-top: 0;
+	    width: 22%;  // golden ratio
+	}
+	#content { padding: 0; }
+	.entry img {
+	    max-width: 100%;
+	}
+	.layout-full .entry img {
+	    max-width: 100%;
+	}
+	.layout-right-content {
+	    #main  {
+	    	float: right;
+	    }
+	    #sidebar  {
+	    	float: left;
+	    }
+	}
+	.layout-full #main  {
+	    width: 100%; // full-width template
+	}
+	.col-left {
+	    float: left;
+	}
+	.col-right {
+	    float: right;
+	}
+	.page-template-template-sitemap-php  {
+		#sitemap-pages  {
+			float: left;
+			width: 48%;
+		}
+		#sitemap-categories  {
+			float: right;
+			width: 48%;
+		}
+		#sitemap-posts  {
+			clear: both;
+		}
+	}
+	.page-template-template-contact-php {
+	    .location-twitter  {
+	    	.col-left  {
+	    		float: left;
+	    	}
+	    	#office-location {
+	    	    width: 48%;
+	    	    margin: 0 1em 0 0;
+	    	}
+	    	.contact-social  {
+	    	    float: left;
+	    	    width: 48%;
+	    	    #twitter  {
+	    	    	margin: 0;
+	    	    }
+	    	}
+	    }
+	}
+
+	/* 5. FOOTER & FOOTER WIDGETS */
+	#footer {
+		padding: 3em 0 1.387em;
+	}
+	#footer-widgets {
+	    .block {
+	    	margin-right:3.8%;
+	    	float: left;
+	    }
+	    .col-1 {
+	    	.block {
+	    		width: 100%;
+	    		float: none;
+	    	}
+	    	.footer-widget-1 {
+	    		margin-right:0;
+	    	}
+	    }
+	    .col-2 {
+	    	.block {
+	    		width: 48%;
+	    	}
+	    	.footer-widget-2 {
+	    		margin-right:0;
+	    	}
+	    }
+	    .col-3 {
+	    	.block {
+	    		width: 30.75%;
+	    	}
+	    	.footer-widget-3 {
+	    		margin-right:0;
+	    	}
+	    }
+	    .col-4 {
+	    	.block {
+	    		width: 22.05%
+	    	}
+	    	.footer-widget-4 {
+	    		margin-right:0;
+	    	}
+	    }
+	    .widget {
+	    	padding: 0;
+	    }
+		#footer-full {
+			.block {
+				float: none;
+				margin-right: 0;
+			}
+			.widget_woo_team {
+				padding: 0;
+				margin: 0;
+				ul {
+					.clearfix;
+					li {
+						border: 0;
+						padding: 0;
+						margin: 0 4% 2.244em 0;
+						display: inline-block;
+						width: 22%;
+						&:nth-child(4n+4) {
+							margin-right: 0;
+						}
+					}
+				}
+			}
+		}	    
+	}
+
+	/* 6. IE FIXES */
+
+	.ie7 {
+	    #top-nav {
+	    	position: relative;
+	    	z-index: 9999999;
+	    }
+	    #header {
+	    	position: relative;
+	    	z-index: 9999999;
+	    }
+	}
+
+	/* 7. HOMEPAGE */
+	.home {
+		#content {
+			margin: 0;
+		}
+		&.page {
+			#content {
+				margin: 0 auto;
+			}
+		}
+		#header {
+			margin: 0;
+			#header-inside {
+				margin: 0 0 3.631em;
+			}
+		}
+	}
+	.home-widgets {
+		.widget {
+			.col-full { margin: 0 auto; }
+			.view-all {
+				position: relative;
+				top: -4px;
+			}			
+			ul.home-list, ul.products {
+				> li {
+					width: 22%;
+					float: left;
+					margin: 0 4% 3em 0;
+					&:nth-child(4n+1) {
+						clear: left;
+					}
+					&:nth-child(4n+4) {
+						clear: right;
+						margin-right: 0;
+					}					
+				}
+			}
+		}
+		.page-content {
+			.woo-image {
+				&.aligncenter {
+					margin: 0 auto 2.618em;
+				}
+				&.alignleft {
+					margin-right: 2.618em;
+					float: left;
+				}
+				&.alignright {
+					margin-left: 2.618em;
+					float: right;
+				}
+			}
+		}
+		.widget_woothemes_testimonials {
+			padding-bottom: 0;
+		}		
+		.widget_woothemes_features {
+			.wp-post-image {
+				float: right;
+				margin: 0 0 0 5.874em;
+			}
+		}
+		.blog-posts {
+			header {
+				.clearfix;
+			}
+		}
+		#homepage-columns {
+			padding: 3em 0 .857em;
+			.widget {
+				padding: 1.618em;
+			}
+			.block {
+				width: 22%;
+				float: left;
+				margin: 0 4% 0 0;
+				&.double {
+					width: 48%;
+				}
+				&.last {
+					margin-right: 0;
+				}
+			}		
+		}
+
+	}
+
+	.entry, .home-widgets, .business {
+		.testimonials {
+			.quote {
+				width: 22%;
+				float: left;
+				margin: 0 4% 3em 0;
+				.transition();
+				clear: none;
+				&:hover {
+					top: -5px;
+				}
+				&:nth-child(4n+1) {
+					clear: left;
+				}
+				&:nth-child(4n+4) {
+					clear: right;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+	.business {
+		.testimonials {
+			.quote {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	/* Slider */
+	#header-right {
+		position: relative;
+		width: 65%;
+		float: right;
+		margin: 0;
+		overflow: visible;
+		border: 0;
+		padding: 0;		
+	}
+	#featured-slider {
+		ul.slides {
+			li {
+				.slide-content {
+					position: absolute;
+					bottom: 0;
+					margin: 1.618em;
+					width: 47.5%;					
+				}
+				&.no-image {
+					.slide-content {
+						margin: 0;
+						position: static;
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+	#slider-pagination {
+		overflow: visible;
+		position: absolute;
+		top: -62px;
+		right: 0;
+	}	
+}
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1024px) {
+	#header-right {
+		float: none;
+		width: 100%;
+		clear: both;
+	}
+	#featured-slider {
+		ul.slides {
+			li {
+				&.has-video {
+					&.flex-active-slide {
+						.slide-media {
+							display: block;
+						}
+					}
+					.slide-media {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	#navigation #header-contact {
+		ul.nav li.phone {
+			&:before {
+				content: none;
+			}
+			span {
+				display: none;
+			}
+			a {
+				padding: 0;
+				display: block;
+				&:before {
+					color: @color_links;
+				}
+			} 
+		}
+	}
+}
+
+@media only screen and (max-width: 1280px) {
+	#header, .home.page #content, #content, #footer, #footer-widgets .col-full, .home-widgets .col-full { .borderbox; padding-left: 2em; padding-right: 2em; }
+}

@@ -1,0 +1,88 @@
+/* First, reset everything to a standard */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	font-family: verdana, arial, helvetica, sans-serif;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	font-size: 18px;
+	line-height: 18px;
+	vertical-align: top;
+}
+
+/* Then apply extra specific things to html & body elements */
+html, body {
+	line-height: 12px;
+	text-align: left;
+	color: #444444;
+	height: 100%;
+	background-color: #ffffff;
+}
+
+.zipItContainer {
+	position: absolute;
+	display: block;
+	height: 380px;
+	width: 500px;
+	top: 50%;
+	left: 50%;
+	margin-top: -190px;
+	margin-left: -250px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.zipItBox {
+	position: relative;
+	display: block;
+	height: 270px;
+	width: 500px;
+	background-color: #ddddee;
+	text-align: left;
+}
+
+.zipItBox .fileList {
+	position: relative;
+	display: inline-block;
+	height: 220px;
+	width: 230px;
+	top: 15px;
+	left: 15px;
+	padding: 10px;
+	background-color: #ffffff;
+	font-size: 12px;
+	text-align: left;
+}
+
+.zipItBox .zipItDownload {
+	position: absolute;
+	display: inline-block;
+	height: 240px;
+	width: 185px;
+	top: 5px;
+	left: 275px;
+	padding: 10px;
+	font-size: 12px;
+	text-align: left;
+}
+
+.zipItOutput {
+	line-height: 14px;
+	margin: 10px;
+}
+
+.zipItOutput a,b {
+	font-size: 10px;
+}
+
+.zipItNoMargin {
+	margin: 0px;
+}

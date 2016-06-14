@@ -1,0 +1,287 @@
+/*  
+
+Alt Style: Purple
+
+Copyright: (c) 2009-2011 WooThemes.
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+*/
+
+
+/*------------------------------------------------------------------------------------------*/
+/* LESS MIXINS */
+/*------------------------------------------------------------------------------------------*/
+@import url(../css/mixins.less);
+
+@color_links:	#9078A8;
+
+/*------------------------------------------------------------------------------------------*/
+/* 1. SETUP */
+/*------------------------------------------------------------------------------------------*/
+
+::selection, ::-moz-selection  {
+	background: @color_links;
+}
+
+
+/* Hyperlinks */
+a {
+	color: @color_links;
+	&:hover {
+		color: @color_links - #222;
+	}
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 2. STRUCTURE */
+/*------------------------------------------------------------------------------------------*/
+
+/* Header */
+#header {
+	.nav-toggle {
+		&:after {
+			background: @color_links;
+		}
+	}
+}
+
+/* Home Widgets */
+.home-widgets {
+	.widget {
+		ul.home-list, ul.products {
+			> li {		
+				&:hover {
+					a {
+						h3, h1 {
+							color: @color_links;
+						}
+					}
+				}
+			}		
+		}	
+	}	
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 3. WORDPRESS */
+/*------------------------------------------------------------------------------------------*/
+
+.post, .type-page {
+	.read-more {
+		a {
+			&:hover {
+				background: @color_links;
+			}
+			&:active {
+				background: @color_links - #222;
+			}
+		}
+	}
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 4. NAVIGATION */
+/*------------------------------------------------------------------------------------------*/
+
+// the main nav
+#navigation {
+	ul.nav {
+		li {
+			a {
+				-webkit-tap-highlight-color: @color_links;
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 5. WIDGETS */
+/*------------------------------------------------------------------------------------------*/
+
+/* Tabs */
+.widget_woodojo_tabs, .woocommerce_tabs, .woocommerce-tabs { 
+	ul.nav-tabs, ul.tabs {
+		li {
+			a {
+				&:hover {
+					color: @color_links;
+				}
+			}
+		}
+	}
+}
+
+.widget_woodojo_twitterprofile {
+	.follow-link {
+		a {
+			&:hover {
+				background: @color_links;
+			}
+			&:active {
+				background: @color_links - #222;
+			}			
+		}
+	}
+}
+
+
+.widget_woo_team {
+	ul {
+		li {
+			a {
+				&:hover {
+					.name {
+						color: @color_links;	
+					}
+				}
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 7. PAGE TEMPLATES */
+/*------------------------------------------------------------------------------------------*/
+
+
+/* Timeline Page Template */
+#timeline { 
+	.archives_list {
+		.comments {
+			a { 
+				&:after  {
+					border:.3em solid @color_links;
+				}
+			}
+		}
+	}
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 9. MISC */
+/*------------------------------------------------------------------------------------------*/
+
+/* Subscribe & Connect (& Related posts) */
+#connect {
+	.social {
+		a:before {
+			background: @color_links;
+		}
+	}
+}
+
+/* Buttons (Includes WF chortcode buttons) */
+a.button, 
+#commentform #submit,
+.submit,
+input[type=submit],
+input.button,
+button.button,
+#wrapper .woo-sc-button, .added_to_cart {
+	background: @color_links;
+	&:hover { color: #fff; background: darken(@color_links, 10%); }
+	&:active {
+		border-color: @color_links - #555;
+	}
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 10. RESPONSIVE */
+/*------------------------------------------------------------------------------------------*/
+
+@media only screen and (min-width: 768px) {
+
+	#navigation {		
+	    ul.nav {
+	    	li {  // Overwrite mobile styles
+				&.current-menu-item, &.current_page_item {
+					> a {
+						color: @color_links;
+					}
+				}
+			}
+	    }
+		#header-contact {
+			ul.nav {
+				li {
+					&:before {
+						color: @color_links;
+					}
+				}
+			}
+		}	    
+	}
+
+	.home-widgets {
+		#homepage-columns {
+			.widget_woodojo_tweets {
+				.time-ago {
+					a {
+						color: @color_links;
+					}
+				}
+			}	
+		}
+
+	}
+
+}
+
+/*------------------------------------------------------------------------------------------*/
+/* 11. WOOCOMMERCE */
+/*------------------------------------------------------------------------------------------*/
+
+// General WooCommerce
+.star-rating {
+	span:before {
+		color: @color_links;
+	}
+}
+
+// Widgets
+.widget_layered_nav {
+	ul {
+		li {
+			&.chosen {
+				a {
+					background: @color_links;
+				}
+			}
+		}
+	}
+}
+
+ul.products {
+	li.product {
+		del {
+			color: @color_links;
+		}
+	}
+}
+
+// Single product
+.single-product {
+	.price {
+		del {
+			color: @color_links;
+		}
+		ins {
+			color: @color_headings;
+
+		}
+	}	
+}
+
+@media only screen and (min-width: 768px) {
+
+	#header {
+		.cart-contents {
+			&:before {
+				color: @color_links;
+			}
+		}
+	}
+
+}
